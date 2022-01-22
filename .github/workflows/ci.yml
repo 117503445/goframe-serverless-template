@@ -47,8 +47,8 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./app/api-template
-          file: {context}/manifest/docker/Dockerfile
+          context: "./app/api-template"
+          file: "{context}/manifest/docker/Dockerfile"
 
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
