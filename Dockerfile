@@ -14,4 +14,5 @@ RUN apk add tzdata && cp /usr/share/zoneinfo/${TZ} /etc/localtime \
     && echo ${TZ} > /etc/timezone
 WORKDIR /root
 COPY --from=build /root/project/server_bin /root/server_bin
+COPY --from=build /root/project/manifest/config/config.yaml /root/config.yaml
 ENTRYPOINT /root/server_bin
