@@ -1,1 +1,1 @@
-# GoFrame Template For MonoRepo
+# GoFrame Template For SingleRepo
