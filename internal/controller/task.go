@@ -4,6 +4,10 @@ import (
 	"context"
 
 	"goframe-serverless-template/apiv1"
+	"goframe-serverless-template/internal/model/entity"
+	"goframe-serverless-template/internal/service"
+
+	"github.com/gogf/gf/v2/util/gconv"
 )
 
 var (
@@ -24,11 +28,17 @@ func (h *cTask) TaskGetAll(ctx context.Context, req *apiv1.TaskGetAllReq) (res [
 			IsDone: false,
 		},
 	}
-
+	items, err := service.Task().GetAll(ctx)
+	if err := gconv.Structs(items, &res); err != nil {
+		panic(err)
+	}
 	return
 }
 
 func (h *cTask) TaskCreate(ctx context.Context, req *apiv1.TaskCreateReq) (res []*apiv1.TaskCreateRes, err error) {
-
+	service.Task().CreateOne(ctx, &entity.Task{
+		Title:  req.Title,
+		IsDone: 0,
+	})
 	return
 }

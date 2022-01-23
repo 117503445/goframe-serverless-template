@@ -16,6 +16,7 @@ type TaskGetAllRes struct {
 
 type TaskCreateReq struct {
 	g.Meta `path:"/task" tags:"Task" method:"post"`
+	Title string
 }
 type TaskCreateRes struct {
 	g.Meta `mime:"application/json"`

@@ -11,3 +11,10 @@ services:
       - ./:/root/project/goframe-serverless-template
     stdin_open: true
     tty: true
+  db:
+    image: mysql/mysql-server
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: "MYSQL_PASSWORD"
+      MYSQL_ROOT_HOST: "%"
+    # docker exec -it *** sh && mysql -pMYSQL_PASSWORD
