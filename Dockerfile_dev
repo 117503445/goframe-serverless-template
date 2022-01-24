@@ -4,7 +4,8 @@ ENV GO111MODULE=on GOPROXY=https://goproxy.cn,direct
 WORKDIR /root/project/goframe-serverless-template
 RUN echo "Server = https://mirrors.aliyun.com/archlinux/\$repo/os/\$arch">/etc/pacman.d/mirrorlist
 RUN pacman -Syyu --noconfirm
-RUN pacman -S which zsh htop git vim wget go gcc --noconfirm
+RUN pacman -S which zsh htop git vim wget go gcc python-pip --noconfirm
+RUN pip install mycli
 RUN go install github.com/gogf/gf-cli/v2/gf@master
 ENV PATH "$PATH:/root/go/bin"
 ENTRYPOINT [ "zsh" ]

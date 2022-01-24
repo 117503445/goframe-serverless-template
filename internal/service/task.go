@@ -27,7 +27,7 @@ func (s *sTask) GetAll(ctx context.Context) (items []*entity.Task, err error) {
 	return items, nil
 }
 
-func (s *sTask) CreateOne(ctx context.Context,item *entity.Task) (err error) {
+func (s *sTask) CreateOne(ctx context.Context, item *entity.Task) (err error) {
 	// items := ([]*entity.Task)(nil)
 	_, err = dao.Task.Ctx(ctx).Data(item).Insert()
 	return err

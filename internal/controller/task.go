@@ -17,20 +17,12 @@ var (
 type cTask struct{}
 
 func (h *cTask) TaskGetAll(ctx context.Context, req *apiv1.TaskGetAllReq) (res []*apiv1.TaskGetAllRes, err error) {
-	res = []*apiv1.TaskGetAllRes{
-		{
-			Id:     1,
-			Title:  "task1",
-			IsDone: true,
-		}, {
-			Id:     2,
-			Title:  "task2",
-			IsDone: false,
-		},
-	}
 	items, err := service.Task().GetAll(ctx)
 	if err := gconv.Structs(items, &res); err != nil {
 		panic(err)
+	}
+	if res == nil {
+		res = make([]*apiv1.TaskGetAllRes, 0) // TODO process in middleware
 	}
 	return
 }
