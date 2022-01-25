@@ -18,7 +18,9 @@ var (
 		Brief: "start http server",
 		Func: func(ctx context.Context, parser *gcmd.Parser) (err error) {
 
-			g.DB().GetConfig().Link = genv.GetWithCmd("database.link").String()
+			dblink := genv.GetWithCmd("database.link").String()
+			g.Log().Line().Debug(ctx, dblink)
+			g.DB().GetConfig().Link = dblink
 
 			s := g.Server()
 			s.Group("/", func(group *ghttp.RouterGroup) {

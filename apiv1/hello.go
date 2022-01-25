@@ -9,4 +9,5 @@ type HelloReq struct {
 }
 type HelloRes struct {
 	g.Meta `mime:"application/json" example:"string"`
+	Version string
 }
