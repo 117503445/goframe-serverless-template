@@ -19,7 +19,7 @@ var (
 		Func: func(ctx context.Context, parser *gcmd.Parser) (err error) {
 
 			dblink := genv.GetWithCmd("database.link").String()
-			g.Log().Line().Debug(ctx, dblink)
+			g.Log().Line().Debug(ctx, "dblink = ", dblink)
 			g.DB().GetConfig().Link = dblink
 
 			s := g.Server()

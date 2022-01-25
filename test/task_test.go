@@ -53,6 +53,13 @@ func assertResponseSuccess(t *testing.T, response *gvar.Var) {
 	assert.True(t, isSuccess)
 }
 
+func TestHello(t *testing.T) {
+
+	response := g.Client().GetVar(ctx, "http://localhost:8080/hello")
+	assertResponseSuccess(t, response)
+	t.Log(response)
+}
+
 func TestTask(t *testing.T) {
 	g.Client().PostVar(ctx, "http://localhost:8080/task", g.Map{"title": "task3"})
 
