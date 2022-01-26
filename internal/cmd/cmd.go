@@ -29,6 +29,7 @@ var (
 					"default": gdb.ConfigGroup{
 						gdb.ConfigNode{
 							Link: dblink,
+							Type: "mysql",
 						},
 					},
 				})
