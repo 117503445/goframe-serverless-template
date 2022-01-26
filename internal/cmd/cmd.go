@@ -21,22 +21,18 @@ var (
 
 			dblink := genv.GetWithCmd("dblink").String()
 			g.Log().Line().Debug(ctx, "dblink = ", dblink)
-			g.Log().Line().Debug(ctx, "dbpass = ", genv.GetWithCmd("dbpass").String())
-			// g.DB().GetConfig().Link = dblink
 
+			// g.Log().Line().Debug(ctx, "dbpass = ", genv.GetWithCmd("dbpass").String())
 
-			gdb.SetConfig(gdb.Config {
-				"default" : gdb.ConfigGroup {
-					gdb.ConfigNode {
-						Host     : "ali.117503445.top",
-						Port     : "3306",
-						User     : "root",
-						Pass     : genv.GetWithCmd("dbpass").String(),
-						Name     : "goframe_serverless_template",
-						Type     : "mysql",
+			if dblink != "" {
+				gdb.SetConfig(gdb.Config{
+					"default": gdb.ConfigGroup{
+						gdb.ConfigNode{
+							Link: dblink,
+						},
 					},
-				},
-			})
+				})
+			}
 
 			s := g.Server()
 			s.Group("/", func(group *ghttp.RouterGroup) {
@@ -47,7 +43,7 @@ var (
 				)
 			})
 			s.Run()
-			
+
 			return nil
 		},
 	}
