@@ -20,7 +20,7 @@ func (h *cHello) Hello(ctx context.Context, req *apiv1.HelloReq) (res *apiv1.Hel
 	dblink := genv.GetWithCmd("dblink").String()
 	g.Log().Line().Debug(ctx, "dblink = ", dblink)
 	res = &apiv1.HelloRes{
-		Version: "1.0",
+		Version: "1.1",
 	}
 	return
 }
