@@ -20,7 +20,7 @@ var (
 
 			dblink := genv.GetWithCmd("dblink").String()
 			g.Log().Line().Debug(ctx, "dblink = ", dblink)
-			g.DB().GetConfig().Link = dblink
+			// g.DB().GetConfig().Link = dblink
 
 			s := g.Server()
 			s.Group("/", func(group *ghttp.RouterGroup) {
